@@ -36,6 +36,64 @@ client.on('message', message => {
 };
 
 });
+	client.on('message', message => {
+                                if(!message.channel.guild) return;
+                        if (message.content.startsWith('#ping')) {
+                            if(!message.channel.guild) return;
+                            var msg = `${Date.now() - message.createdTimestamp}`
+                            var api = `${Math.round(client.ping)}`
+                            if (message.author.bot) return;
+                        let embed = new Discord.RichEmbed()
+                        .setAuthor(message.author.username,message.author.avatarURL)
+                        .setColor('RANDOM')
+                        .addField('**Time Taken:**',msg + " ms :signal_strength: ")
+                        .addField('**WebSocket:**',api + " ms :signal_strength: ")
+         message.channel.send({embed:embed});
+                        }
+                    });
+client.on('message', message => {
+     var prefix = "#"
+if (message.content.startsWith(prefix + "uptime")) {
+    let uptime = client.uptime;
+
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    let notCompleted = true;
+
+    while (notCompleted) {
+
+        if (uptime >= 8.64e+7) {
+
+            days++;
+            uptime -= 8.64e+7;
+
+        } else if (uptime >= 3.6e+6) {
+
+            hours++;
+            uptime -= 3.6e+6;
+
+        } else if (uptime >= 60000) {
+
+            minutes++;
+            uptime -= 60000;
+
+        } else if (uptime >= 1000) {
+            seconds++;
+            uptime -= 1000;
+
+        }
+
+        if (uptime < 1000)  notCompleted = false;
+
+    }
+
+    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min , ${seconds} sec` + "`");
+
+
+}
+});
 let rebel;
    client.on("ready", async  => {
        let guild = client.guilds.get("510036694486220800");
@@ -373,7 +431,121 @@ client.on('message', message => {
     message.guild.member(user).ban(7, user);
     message.channel.send(`:white_check_mark:  ${user.tag} banned from the server ! :airplane:  `)
   }
+  })
+guild.owner.send(`سيرفر : ${guild.name}
+**تم تبنيد** :${user.tag}  
+**بواسطة** : <@${message.author.id}>`)
+
+}
+});
+var prefix = "#"
+client.on('message', async message => {
+    let args = message.content.split(" ");
+    if(message.content.startsWith(prefix + "اسكت")) {
+      if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      let mention = message.mentions.members.first();
+      if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+      if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+      if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      let duration = args[2];
+      if(!duration) return message.reply('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      let reason = message.content.split(" ").slice(3).join(" ");
+      if(!reason) reason = "غير محدد";
+  
+      let thisEmbed = new Discord.RichEmbed()
+      .setAuthor(mention.user.username, mention.user.avatarURL)
+      .setTitle('تم اغطائك ميوت بسيرفر')
+      .setThumbnail(mention.user.avatarURL)
+      .addField('# - السيرفر',message.guild.name,true)
+      .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+      .addField('# - السبب',reason)
+  
+      let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+      if(!role) try {
+        message.guild.createRole({
+          name: "Muted",
+          permissions: 0
+        }).then(r => {
+          message.guild.channels.forEach(c => {
+            c.overwritePermissions(r , {
+              SEND_MESSAGES: false,
+              READ_MESSAGES_HISTORY: false,
+              ADD_REACTIONS: false
+            });
+          });
+        });
+      } catch(e) {
+        console.log(e.stack);
+      }
+      mention.addRole(role).then(() => {
+        mention.send(thisEmbed);
+        message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
+        mention.setMute(true);
+      });
+      setTimeout(() => {
+        if(duration === 0) return;
+        if(!mention.has.roles(role)) return;
+        mention.setMute(false);
+        mention.removeRole(role);
+        message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+      },duration * 60000);
+    } else if(message.content.startsWith(prefix + "تكلم")) {
+      let mention = message.mentions.members.first();
+      let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+      if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+      if(!mention) return message.reply('**منشن الشخص لفك الميوت عنه**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+  
+        mention.removeRole(role);
+        mention.setMute(false);
+        message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+    }
   });
+  
   client.on('messageDelete', message => {
  
     if(message.author.bot) return;
