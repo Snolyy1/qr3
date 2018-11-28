@@ -405,7 +405,7 @@ client.on('message', message => {
     if(oldMessage.content.startsWith('https://')) return;
   
     let messageUpdate = new Discord.RichEmbed()
-    .setTitle('**[MESSAGE EDIT]**')
+    .setTitle('**[تعديل رسالة]**')
     .setThumbnail(oldMessage.author.avatarURL)
     .setColor('#000000')
     .setDescription(`**\n**:wrench: Successfully \`\`EDIT\`\` **MESSAGE** In ${oldMessage.channel}\n\n**Channel:** \`\`${oldMessage.channel.name}\`\` \n\n**Sent By:** <@${oldMessage.author.id}>\n\n**Old Message:**\`\`\`${oldMessage}\`\`\`\n**New Message:**\`\`\`${newMessage}\`\`\``)
@@ -429,7 +429,7 @@ client.on('message', message => {
         var userAvatar = logs.entries.first().executor.avatarURL;
   
         let roleCreate = new Discord.RichEmbed()
-        .setTitle('**[ROLE CREATE]**')
+        .setTitle('**[صناعة رتبه]**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\`\n**By:** <@${userID}>`)
         .setColor('#000000')
@@ -452,7 +452,7 @@ client.on('message', message => {
         var userAvatar = logs.entries.first().executor.avatarURL;
   
         let roleDelete = new Discord.RichEmbed()
-        .setTitle('**[ROLE DELETE]**')
+        .setTitle('**[حذف رتبه]**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` Role.\n\n**Role Name:** \`\`${role.name}\`\` \n**By:** <@${userID}>`)
         .setColor('#000000')
@@ -488,7 +488,7 @@ client.on('message', message => {
         var userAvatar = logs.entries.first().executor.avatarURL;
   
         let channelCreate = new Discord.RichEmbed()
-        .setTitle('**[CHANNEL CREATE]**')
+        .setTitle('**[صناعة روم]**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`CREATE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\`\n**By:** <@${userID}>`)
         .setColor('#000000')
@@ -521,7 +521,7 @@ client.on('message', message => {
         var userAvatar = logs.entries.first().executor.avatarURL;
   
         let channelDelete = new Discord.RichEmbed()
-        .setTitle('**[CHANNEL DELETE]**')
+        .setTitle('**[حذف روم]**')
         .setThumbnail(userAvatar)
         .setDescription(`**\n**:white_check_mark: Successfully \`\`DELETE\`\` **${roomType}** channel.\n\n**Channel Name:** \`\`${channel.name}\`\`\n**By:** <@${userID}>`)
         .setColor('#000000')
@@ -547,7 +547,7 @@ client.on('message', message => {
         if(userID === client.user.id) return;
   
         let banInfo = new Discord.RichEmbed()
-        .setTitle('**[BANNED]**')
+        .setTitle('**[حظر عضو]**')
         .setThumbnail(userAvatar)
         .setColor('#000000')
         .setDescription(`**\n**:airplane: Successfully \`\`BANNED\`\` **${user.username}** From the server!\n\n**User:** <@${user.id}> \n**By:** <@${userID}> `)
@@ -571,7 +571,7 @@ client.on('message', message => {
         if(userID === client.user.id) return;
   
         let unBanInfo = new Discord.RichEmbed()
-        .setTitle('**[UNBANNED]**')
+        .setTitle('**[فك الحظر عن عضو]**')
         .setThumbnail(userAvatar)
         .setColor('#000000')
         .setDescription(`**\n**:unlock: Successfully \`\`UNBANNED\`\` **${user.username}** From the server\n\n**User:** <@${user.id}> (ID: ${user.id})\n**By:** <@${userID}> `)
@@ -595,7 +595,7 @@ client.on('message', message => {
   
         if(oldGuild.name !== newGuild.name) {
             let guildName = new Discord.RichEmbed()
-            .setTitle('**[CHANGE GUILD NAME]**')
+            .setTitle('**[تغير اسم السيرفر]**')
             .setThumbnail(userAvatar)
             .setColor('#000000')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` The guild name.\n\n**Old Name:** \`\`${oldGuild.name}\`\`\n**New Name:** \`\`${newGuild.name}\`\`\n**By:** <@${userID}> `)
@@ -606,7 +606,7 @@ client.on('message', message => {
         }
         if(oldGuild.region !== newGuild.region) {
             let guildRegion = new Discord.RichEmbed()
-            .setTitle('**[CHANGE GUILD REGION]**')
+            .setTitle('**[تغير منطقة السيرفر]**')
             .setThumbnail(userAvatar)
             .setColor('#000000')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`EDITED\`\` The guild region.\n\n**Old Region:** ${oldGuild.region}\n**New Region:** ${newGuild.region}\n**By:** <@${userID}>`)
@@ -684,7 +684,7 @@ client.on('message', message => {
             }
   
             let updateNickname = new Discord.RichEmbed()
-            .setTitle('**[UPDATE MEMBER NICKNAME]**')
+            .setTitle('**[تغير نك نيم]**')
             .setThumbnail(userAvatar)
             .setColor('#000000')
             .setDescription(`**\n**:spy: Successfully \`\`CHANGE\`\` Member Nickname.\n\n**User:** ${oldMember} \n**Old Nickname:** ${oldNM}\n**New Nickname:** ${newNM}\n**By:** <@${userID}> `)
@@ -697,7 +697,7 @@ client.on('message', message => {
             let role = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first();
   
             let roleAdded = new Discord.RichEmbed()
-            .setTitle('**[ADDED ROLE TO MEMBER]**')
+            .setTitle('**[إضافة رتبه لعضو]**')
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('#000000')
             .setDescription(`**\n**:white_check_mark: Successfully \`\`ADDED\`\` Role to **${oldMember.user.username}**\n\n**User:** <@${oldMember.id}>\n**Role:** \`\`${role.name}\`\` \n**By:** <@${userID}> `)
@@ -710,7 +710,7 @@ client.on('message', message => {
             let role = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first();
   
             let roleRemoved = new Discord.RichEmbed()
-            .setTitle('**[REMOVED ROLE FROM MEMBER]**')
+            .setTitle('**[إزالة رتبه من عضو]**')
             .setThumbnail(oldMember.guild.iconURL)
             .setColor('#000000')
             .setDescription(`**\n**:negative_squared_cross_mark: Successfully \`\`REMOVED\`\` Role from **${oldMember.user.username}**\n\n**User:** <@${oldMember.user.id}> \n**Role:** \`\`${role.name}\`\` \n**By:** <@${userID}> `)
@@ -749,7 +749,7 @@ client.on('message', message => {
   
         if(voiceOld.serverMute === false && voiceNew.serverMute === true) {
             let serverMutev = new Discord.RichEmbed()
-            .setTitle('**[VOICE MUTE]**')
+            .setTitle('**[إضافة ميوت صوتي]**')
             .setColor('#000000')
             .setDescription(`**User:** ${voiceOld} \n**By:** <@${userID}> \n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\` `)
             .setTimestamp()
@@ -759,7 +759,7 @@ client.on('message', message => {
         }
         if(voiceOld.serverMute === true && voiceNew.serverMute === false) {
             let serverUnmutev = new Discord.RichEmbed()
-            .setTitle('**[VOICE UNMUTE]**')
+            .setTitle('**[إزالة ميوت صوتي]**')
             .setColor('#000000')
             .setDescription(`**User:** ${voiceOld} \n**By:** <@${userID}> \n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\``)
             .setTimestamp()
@@ -769,7 +769,7 @@ client.on('message', message => {
         }
         if(voiceOld.serverDeaf === false && voiceNew.serverDeaf === true) {
             let serverDeafv = new Discord.RichEmbed()
-            .setTitle('**[VOICE DEAF]**')
+            .setTitle('**[إضافة سماعة لعضو]**')
             .setColor('#000000')
             .setDescription(`**User:** ${voiceOld} \n**By:** <@${userID}> \n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\``)
             .setTimestamp()
@@ -779,7 +779,7 @@ client.on('message', message => {
         }
         if(voiceOld.serverDeaf === true && voiceNew.serverDeaf === false) {
             let serverUndeafv = new Discord.RichEmbed()
-            .setTitle('**[VOICE UNDEAF]**')
+            .setTitle('**[إزالة سماعة من عضو]**')
             .setColor('#000000')
             .setDescription(`**User:** ${voiceOld} **By:** <@${userID}> \n**Channel:** \`\`${voiceOld.voiceChannel.name}\`\``)
             .setTimestamp()
@@ -812,7 +812,7 @@ client.on('message', message => {
                   data[ss.executor.id].time = 0
               });   
           setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {   
+              if (data[ss.executor.id].time <= 5) {   
                   data[ss.executor.id].time = 0
               }
           },60000)
@@ -841,7 +841,7 @@ client.on('message', message => {
                   data[ss.executor.id].time = 0
               });
           setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {
+              if (data[ss.executor.id].time <= 5) {
                   data[ss.executor.id].time = 0
               }
           },60000)
@@ -870,7 +870,7 @@ client.on('message', message => {
                   data[ss.executor.id].time = 0
               });
           setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {
+              if (data[ss.executor.id].time <= 5) {
                   data[ss.executor.id].time = 0
               }
           },60000)
@@ -891,7 +891,7 @@ client.on('message', message => {
         } else {
             data[ss.executor.id].time+=1
         };
-          if (data[ss.executor.id].time >= 3) {
+          if (data[ss.executor.id].time >= 5) {
               g.members.get(ss.executor.id).roles.forEach(r => {
                   r.edit({   
                       permissions : []
@@ -899,7 +899,7 @@ client.on('message', message => {
               });   
           }
           setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {    
+              if (data[ss.executor.id].time <= 5) {    
                   data[ss.executor.id].time = 0
               }   
           },60000)
