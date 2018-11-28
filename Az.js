@@ -431,13 +431,9 @@ client.on('message', message => {
     message.guild.member(user).ban(7, user);
     message.channel.send(`:white_check_mark:  ${user.tag} banned from the server ! :airplane:  `)
   }
-  })
-guild.owner.send(`سيرفر : ${guild.name}
-**تم تبنيد** :${user.tag}  
-**بواسطة** : <@${message.author.id}>`)
+  });
 
-}
-});
+
 var prefix = "#"
 client.on('message', async message => {
     let args = message.content.split(" ");
