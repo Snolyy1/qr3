@@ -363,7 +363,7 @@ client.on('message', message => {
     let reason = message.content.split(" ").slice(2).join(" ");
     if (message.mentions.users.size < 1) return message.channel.send({
     files: [
-      "./images/met.png"
+      "./met.png"
     ]
   })
     if (!message.guild.member(user)
