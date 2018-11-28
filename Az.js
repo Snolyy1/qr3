@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
+const ms = require('ms');
+const moment = require("moment");
 const client = new Discord.Client
 client.on('ready', () => {
      console.log(`Sx0lyy. BOT STARTED`);
@@ -126,7 +128,7 @@ client.on('voiceStateUpdate', (u, member) => {
     if(member.selfDeafen) return;
     vpoints[author].points += rPoints;
     fs.writeFileSync("./Voice.json", JSON.stringify(vpoints, null, 2));
-  }, 5000); // 5 Secs
+  }, 20000); // 5 Secs
 });
 var prefix = '#'
   client.on('message', message => {
@@ -363,7 +365,7 @@ client.on('message', message => {
     let reason = message.content.split(" ").slice(2).join(" ");
     if (message.mentions.users.size < 1) return message.channel.send({
     files: [
-      "./images/met.png"
+      "./met.png"
     ]
   })
     if (!message.guild.member(user)
