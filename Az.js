@@ -17,7 +17,7 @@ client.on('message', message => {
   message.channel.bulkDelete(args[0]).then(() => {
     const embed = new Discord.RichEmbed()
       .setColor("#000000")
-      .setDescription("```"+ args[0] +" : عدد الرسائل التي تم مسحها```");
+      .setDescription(`**${args[0]} : عدد الرسائل التي تم مسحها**`);
     message.channel.send({ embed });
 
     const actionlog = message.guild.channels.find('name', 'log');
