@@ -152,7 +152,7 @@ client.on('message',async message => {
   let guild = message.guild;
   let author = message.author;
  
-  let rPoints = Math.floor(Math.random() * 2) + 1;// Random Points
+  let rPoints = Math.floor(Math.random() * 4) + 1;// Random Points
   tpoints[author.id].points += rPoints;
   fs.writeFileSync("./Text.json", JSON.stringify(tpoints, null, 2));
   if(args[0] === `#توب`) {
@@ -180,13 +180,13 @@ client.on('voiceStateUpdate', (u, member) => {
   let author = member.user.id;
   let guild = member.guild;
   if(member.voiceChannel === null) return;
-  let rPoints = Math.floor(Math.random() * 2) + 1;// Random Points
+  let rPoints = Math.floor(Math.random() * 4) + 1;// Random Points
   setInterval(() => {
     if(!member.voiceChannel) return;
     if(member.selfDeafen) return;
     vpoints[author].points += rPoints;
     fs.writeFileSync("./Voice.json", JSON.stringify(vpoints, null, 2));
-  }, 20000); // 5 Secs
+  }, 5000); // 5 Secs
 });
 var prefix = '#'
   client.on('message', message => {
