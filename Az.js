@@ -345,7 +345,7 @@ const ee =new Discord.RichEmbed()
     if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
     let user = message.mentions.users.first();
     let reason = message.content.split(" ").slice(2).join(" ");
-    if (message.mentions.users.size < 1) return message.channel.sendembed({
+    if (message.mentions.users.size < 1) return message.channel.send({
     files: [
       "./met.png"
     ]
@@ -371,7 +371,7 @@ c.overwritePermissions(men.id, {
 })
     })
 const embed = new Discord.RichEmbed()
-.setColor("ffffff")
+.setColor("00000f")
 .setDescription(`**
  <@${men.id}>
 لقد تم اعطائك ميوت كتابي
@@ -380,7 +380,7 @@ const embed = new Discord.RichEmbed()
           
 client.users.get(men.id).sendEmbed(embed)
 const Embed11 = new Discord.RichEmbed()
-.setColor("ffffff")
+.setColor("000000")
 .setAuthor(eyad.guild.name, eyad.guild.iconURL)
 .setDescription(`          <@${men.id}>
 لقد تم اعطائه الميوت الكتابي بنجاح
@@ -401,7 +401,7 @@ if (!eyad.member.hasPermission("MUTE_MEMBERS")) return eyad.channel.send("**ان
          })
     })
 const embed = new Discord.RichEmbed()
-.setColor("ffffff")
+.setColor("000000")
 .setDescription(`**
  <@${men.id}>
 تم فك الميوت الكتابي 
@@ -410,7 +410,7 @@ const embed = new Discord.RichEmbed()
           
 client.users.get(men.id).sendEmbed(embed)
 const Embed11 = new Discord.RichEmbed()
-.setColor("ffffff")
+.setColor("000000")
 .setAuthor(eyad.guild.name, eyad.guild.iconURL)
 .setDescription(`      
 <@${men.id}>
@@ -1026,4 +1026,5 @@ client.on('message',message =>{
   });
     }
 });
+
 client.login(process.env.BOT_TOKEN)
