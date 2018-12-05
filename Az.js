@@ -45,7 +45,7 @@ client.on('message', message => {
                             if (message.author.bot) return;
                         let embed = new Discord.RichEmbed()
                         .setAuthor(message.author.username,message.author.avatarURL)
-                        .setColor('RANDOM')
+                        .setColor('#000000')
                         .addField('**Time Taken:**',msg + " ms :signal_strength: ")
                         .addField('**WebSocket:**',api + " ms :signal_strength: ")
          message.channel.send({embed:embed});
@@ -89,7 +89,7 @@ if (message.content.startsWith(prefix + "uptime")) {
 
     }
 
-    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min , ${seconds} sec` + "`");
+    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min, ${seconds} sec` + "`");
 
 
 }
@@ -345,7 +345,7 @@ const ee =new Discord.RichEmbed()
     if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
     let user = message.mentions.users.first();
     let reason = message.content.split(" ").slice(2).join(" ");
-    if (message.mentions.users.size < 1) return message.channel.send({
+    if (message.mentions.users.size < 1) return message.channel.sendembed({
     files: [
       "./met.png"
     ]
