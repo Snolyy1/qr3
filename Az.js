@@ -7,7 +7,7 @@ client.on('ready', () => {
      console.log(`Sx0lyy. BOT STARTED`);
      console.log(`ON ${client.guilds.size} Servers `);
    console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setGame(`Simple Server.`,"http://twitch.tv/fuckoff")
+   client.user.setGame(`Surlyyy.`,"http://twitch.tv/fuckoff")
   });
 var prefix = "#"
 client.on('message', message => {
